@@ -1,5 +1,8 @@
 import { createStore } from 'vuex'
 
+/** modules */
+import characters from '@/store/modules/characters/state'
+
 /** generic */
 import * as actions from '@/store/actions'
 import * as mutations from '@/store/mutations'
@@ -10,5 +13,7 @@ export default createStore({
     getters,
     mutations,
     actions,
-    modules: {}
+    modules: {
+        characters
+    }
 })
