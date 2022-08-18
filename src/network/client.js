@@ -7,4 +7,16 @@ const instance = axios.create({
     baseURL: endPoint
 })
 
+const setDefaultQueryParams = config => {
+    config.params = config.params || {}
+    const apiKey = ''
+    config.params.apiKey = apiKey
+}
+
+/** config the interceptors for request */
+instance.interceptors.request.use(config => {
+    setDefaultQueryParams(config)
+    return config
+})
+
 export default instance
