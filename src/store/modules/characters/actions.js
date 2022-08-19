@@ -13,7 +13,7 @@ export const fetchCharacters = async (context, payload) => {
 @id { string, number } - id of the character
 @return { promise } - request
 */
-export const fetchCharacterById = async(context, id) => {
+export const fetchCharacterById = async (context, id) => {
     const res = await api.fetchCharacterById(id)
     if (res) context.commit('SAVE_CHARACTER_DETAIL', res.data)
     return res
