@@ -1,3 +1,8 @@
 {
-    "title": "teste"
+    "initialPage": "Initial Page",
+    "characterCreation": "Character Creation",
+    "myCharacterList": "My Character List",
+    "characterDetails": "Character Details",
+    "logo": "logo",
+    "characterImageAlt": "Character Image"
 }

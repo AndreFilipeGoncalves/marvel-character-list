@@ -5,7 +5,7 @@ import * as api from '@/network/api/characters.api'
 */
 export const fetchCharacters = async (context, payload) => {
     const res = await api.fetchCharactersList()
-    if (res) context.commit('SAVE_CHARACTERS_LIST', res.data)
+    if (res) context.commit('SAVE_CHARACTERS_LIST', res.data.data)
     return res
 }
 

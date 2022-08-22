@@ -10,7 +10,7 @@ const instance = axios.create({
 const setDefaultQueryParams = config => {
     config.params = config.params || {}
     const apiKey = ''
-    config.params.apiKey = apiKey
+    config.params.apikey = apiKey
 }
 
 /** config the interceptors for request */

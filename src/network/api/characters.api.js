@@ -17,6 +17,6 @@ export const fetchCharactersList = () => {
 export const fetchCharacterById = id => {
     return httpClient({
         method: 'GET',
-        url: `characters/${id}`,
+        url: `characters/${id}`
     })
 }

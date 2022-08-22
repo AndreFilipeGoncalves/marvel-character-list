@@ -1,12 +1,17 @@
 <template>
     <header class="page-header">
-        <router-link :to="'/'">Home</router-link>
-        <router-link :to="'/characterCreation'">character creation</router-link>
-        <router-link :to="'/myCharacterList'">my character list</router-link>
-        <router-link :to="'/CharacterDetails/10'">character details</router-link>
+        <!-- app menu -->
+        <app-menu/>
     </header>
 </template>
 
 <script setup>
-
+import AppMenu from '@/components/generic/menu/Menu'
 </script>
+
+<style lang="scss">
+.page-header {
+    width:100%;
+    height:82px;
+}
+</style>

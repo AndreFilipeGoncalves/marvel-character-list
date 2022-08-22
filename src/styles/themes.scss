@@ -1,7 +1,36 @@
+/* NOTE color names should be content related or primary secondary, something
+along these lines, but since i dont really planned
+the design ahead of time and i am just coding with the flow i ll keep
+the names this way so it is easier for me to remember them */
 [data-theme="light"] {
-
+    --black: #000000;
+    --white: #ffffff;
+    --red: #e23636;
+    --grey: #504a4a;
+    --blue: #518cca;
+    --orange: #f78f3f;
 }
 
 [data-theme="dark"] {
-    
+
+}
+
+
+/* scrollbar */
+@mixin scrollbar($trackColor : transparent, $scrollbarColor : var(--grey)) {
+	overflow-x: hidden;
+	scrollbar-color: $scrollbarColor $trackColor;
+  	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+	    width: 19px;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		border: 7px solid transparent;
+		border-radius: 10px;
+		background-clip: padding-box;
+		background-color: $scrollbarColor;
+	}
 }
