@@ -4,5 +4,9 @@
     "myCharacterList": "My Character List",
     "characterDetails": "Character Details",
     "logo": "logo",
-    "characterImageAlt": "Character Image"
+    "characterImageAlt": "Character Image",
+    "controlPanel": "Control Panel",
+    "edit": "Edit",
+    "addToCollection": "Add to Collection",
+    "placeholderDescription": "Description not available"
 }

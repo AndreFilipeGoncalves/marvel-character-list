@@ -1,7 +1,7 @@
 <template>
     <div class="view-wrapper">
         <!-- page title -->
-        <h1 class="view-title">{{title}}</h1>
+        <h1 v-if="title" class="view-title">{{title}}</h1>
 
         <!-- content slot -->
         <slot></slot>
@@ -30,6 +30,12 @@ const props = defineProps({
 
     .view-title {
         margin-bottom:40px;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .view-wrapper {
+        padding: 10px 10px;
     }
 }
 </style>

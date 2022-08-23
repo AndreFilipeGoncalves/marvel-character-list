@@ -3,10 +3,11 @@ import httpClient from '@/network/client'
 /** fetch the list of characters
 @return { promise } - request
 */
-export const fetchCharactersList = () => {
+export const fetchCharactersList = (offset) => {
     return httpClient({
         method: 'GET',
-        url: 'characters'
+        url: 'characters',
+        params: { offset: offset }
     })
 }
 

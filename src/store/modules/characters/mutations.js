@@ -3,10 +3,29 @@
 @return { void }
 */
 export const SAVE_CHARACTERS_LIST = (state, payload) => {
-    console.log(payload)
-    state.count = payload.count
     state.limit = payload.limit
-    state.offset = payload.offset
     state.total = payload.total
     state.characters = payload.results
+}
+
+/** saves the character detail
+@return { void }
+*/
+export const SAVE_CHARACTER_DETAIL = (state, payload) => {
+    state.characterDetails = payload.results[0]
+}
+
+/** clears the character details
+@return { void }
+*/
+export const CLEAR_CHARACTER_DETAILS = (state) => {
+    state.characterDetails = {}
+}
+
+/** saves the new current offset
+@offset { string, number } - new page offset
+@return { void }
+*/
+export const UPDATE_PAGE = (state, offset) => {
+    state.offset = offset
 }
