@@ -1,9 +1,8 @@
 <template>
     <view-wrapper>
-        <div class="character-details-wrapper">
+        <div class="character-details-wrapper" v-if="Object.keys(getCharacterDetails)">
             <!-- bio -->
             <character-bio
-            v-if="Object.keys(getCharacterDetails)"
             :character="getCharacterDetails">
                 <!-- control panel -->
                 <control-panel
@@ -13,13 +12,24 @@
             </character-bio>
 
             <!-- comics list -->
+            <character-info-list
+            :title="t('comics')"
+            :entries="getCharacterDetails.comics"/>
 
             <!-- stories list -->
+            <character-info-list
+            :title="t('stories')"
+            :entries="getCharacterDetails.stories"/>
 
             <!-- events list -->
+            <character-info-list
+            :title="t('events')"
+            :entries="getCharacterDetails.events"/>
 
             <!-- series list -->
-
+            <character-info-list
+            :title="t('series')"
+            :entries="getCharacterDetails.series"/>
         </div>
     </view-wrapper>
 </template>
@@ -29,6 +39,7 @@ import { onBeforeUnmount } from 'vue'
 import ViewWrapper from '@/components/wrappers/ViewWrapper'
 import CharacterBio from '@/components/characters/CharacterBio'
 import ControlPanel from '@/components/generic/panels/ControlPanel'
+import CharacterInfoList from '@/components/characters/CharacterInfoList'
 import { mapActions, mapGetters } from '@/store/helpers/mappers'
 import { moduleMapper } from '@/store/helpers/modules.map'
 import { useRoute } from 'vue-router'

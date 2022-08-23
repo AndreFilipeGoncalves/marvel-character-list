@@ -62,8 +62,7 @@ const imageSrc = computed(() => {
             height:800px;
             display:flex;
             flex-direction:column;
-            align-items:center;
-            max-width:50%;
+            flex: 1 1;
             .character-bio-description {
                 margin-bottom:40px;
                 text-overflow: ellipsis;
@@ -81,7 +80,7 @@ const imageSrc = computed(() => {
                 height:400px;
             }
             .extra-info {
-                height:400px;
+                height:auto;
             }
         }
     }

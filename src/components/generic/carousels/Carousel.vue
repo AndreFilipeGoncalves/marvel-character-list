@@ -4,20 +4,21 @@
     :numVisible="4"
     :numScroll="3"
     :responsiveOptions="responsiveOptions">
+         <template #item="slotProps">
+             <carousel-card :title="slotProps.data.name"/>
+        </template>
+    </Carousel>
 </template>
 
 <script setup>
 import Carousel from 'primevue/carousel/sfc'
+import CarouselCard from '@/components/generic/carousels/CarouselCard'
 
 const props = defineProps({
     entries: Array
 })
-// const cars = [
-//     {
-//         "id": "1008"
-//         "image": "game-controller.jpg"
-//     }
-// ]
+
+console.log(props.entries)
 
 const responsiveOptions = [
 	{

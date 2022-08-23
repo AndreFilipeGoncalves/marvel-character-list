@@ -8,5 +8,10 @@
     "controlPanel": "Control Panel",
     "edit": "Edit",
     "addToCollection": "Add to Collection",
-    "placeholderDescription": "Description not available"
+    "placeholderDescription": "Description not available",
+    "comics": "Comics",
+    "events": "Events",
+    "stories": "Stories",
+    "series": "Series",
+    "notAvailable": "No Product Available"
 }
