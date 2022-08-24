@@ -1,17 +1,12 @@
 <template>
     <view-wrapper>
-        <uploader @upload:image="handler"/>
-        <img :src="img" alt="">
-        <modal>
-            <character-editor/>
-        </modal>
+        <character-editor/>
     </view-wrapper>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import ViewWrapper from '@/components/wrappers/ViewWrapper'
-import Uploader from '@/components/generic/uploader/Uploader'
 import Modal from '@/components/generic/modals/Modal'
 import CharacterEditor from '@/components/characters/CharacterEditor'
 

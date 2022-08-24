@@ -24,5 +24,7 @@
     "uploadLabel": "Choose a picture",
     "updateName": "Choose a new name",
     "updateDescription": "Choose a new description",
-    "characterEditor": "Character Editor"
+    "characterEditor": "Character Editor",
+    "save": "Save",
+    "cancel": "Cancel"
 }

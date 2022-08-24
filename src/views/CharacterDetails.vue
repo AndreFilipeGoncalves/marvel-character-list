@@ -8,7 +8,7 @@
                 <control-panel
                 :panelId="getCharacterDetails.id"
                 :internalCharacter="location === INTERNAL"
-                @edit="editCharacterHandler"
+                @edit="displayEditor = true"
                 @add="addToCollectionHandler"/>
             </character-bio>
 
@@ -42,6 +42,14 @@
     :type="toastType"
     @close="displayToast = false"/>
 
+    <!-- character edit -->
+    <modal v-if="displayEditor">
+        <character-editor
+        :character="characterDetails"
+        closeCross
+        @close="displayEditor = false"/>
+    </modal>
+
 </template>
 
 <script setup>
@@ -51,6 +59,8 @@ import CharacterBio from '@/components/characters/CharacterBio'
 import ControlPanel from '@/components/generic/panels/ControlPanel'
 import CharacterInfoList from '@/components/characters/CharacterInfoList'
 import AppToast from '@/components/generic/feedback/Toast'
+import CharacterEditor from '@/components/characters/CharacterEditor'
+import Modal from '@/components/generic/modals/Modal'
 import { ERROR, SUCCESS } from '@/assets/constants/feedbackTypes'
 import { INTERNAL } from '@/assets/constants/dataLocations'
 import { mapActions, mapGetters } from '@/store/helpers/mappers'
@@ -84,6 +94,7 @@ const displayToast = ref(false)
 const toastMessage = ref('')
 const toastContent = ref('')
 const toastType = ref('')
+const displayEditor = ref(false)
 
 /** initial data fetch based on the location of the data
 It can either be INTERNAL or EXTERNAL
@@ -94,16 +105,6 @@ if (location === INTERNAL) {
     fetchMyCharacterById(id)
 } else {
     fetchCharacterById(id)
-}
-
-/** init the panel to edit the character, in this case
-we will be using the getCharacterDetails getter, so the
-id that we receive from the event is not used at all
-@id { string numner } id of the character
-@return { void }
-*/
-const editCharacterHandler = () => {
-    console.log('edit character')
 }
 
 const characterDetails = computed(() => {

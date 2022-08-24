@@ -42,18 +42,6 @@ defineEmits(['edit', 'add'])
         flex-direction:row;
         flex-wrap:wrap;
         gap: 20px;
-
-        .p-button {
-            min-width:220px;
-            min-height:40px;
-            background-color: var(--black);
-            color: var(--white);
-            outline:none;
-            border:none;
-            &:hover {
-                background-color: var(--black);
-            }
-        }
     }
 }
 
