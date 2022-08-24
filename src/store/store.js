@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 /** modules */
 import characters from '@/store/modules/characters/state'
+import myCharacters from '@/store/modules/myCharacters/state'
 
 /** generic */
 import * as actions from '@/store/actions'
@@ -14,6 +15,7 @@ export default createStore({
     mutations,
     actions,
     modules: {
-        characters
+        characters,
+        myCharacters
     }
 })

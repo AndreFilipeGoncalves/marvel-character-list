@@ -1,22 +1,33 @@
 <template>
-    <view-wrapper :title="t('initialPage')">
-        <characters-list
-        :characters="getCharacters"
-        :totalCharacters="getTotalNumberOfCharacters"
-        :pageOffset="getCurrentPageOffset"
-        :itemsPerPage="getItemsPerPage"
-        @card:click="navigateToDetails"
-        @update:page="pageHandler"/>
+    <view-wrapper>
+        <div class="initial-page-wrapper">
+            <!-- header section -->
+            <div class="header-section">
+                <h1 class="view-title">{{t('initialPage')}}</h1>
+                <search-input v-model:inputValue="searchValue" :placeholder="t('search')"/>
+            </div>
+
+            <!-- characters list -->
+            <characters-list
+            :characters="getCharacters.filter(ele => ele.name.includes(searchValue))"
+            :totalCharacters="getTotalNumberOfCharacters"
+            :pageOffset="getCurrentPageOffset"
+            :itemsPerPage="getItemsPerPage"
+            @card:click="navigateToDetails"
+            @update:page="pageHandler"/>
+        </div>
     </view-wrapper>
 </template>
 
 <script setup>
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 import ViewWrapper from '@/components/wrappers/ViewWrapper'
 import CharactersList from '@/components/characters/CharactersList'
+import SearchInput from '@/components/generic/inputs/SearchInput'
 import { mapActions, mapGetters } from '@/store/helpers/mappers'
 import { moduleMapper } from '@/store/helpers/modules.map'
 import { routesMapper } from '@/router/helpers/routes.map'
+import { EXTERNAL } from '@/assets/constants/dataLocations'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
@@ -34,6 +45,9 @@ const {
     getCurrentPageOffset,
     getItemsPerPage
 } = mapGetters(moduleMapper.CHARACTERS)
+
+// value being searched
+const searchValue = ref('')
 
 /** calls the actiion to update the selected
 page by updating the offset in the store
@@ -62,6 +76,22 @@ watch(getCurrentPageOffset, (newOffset) => {
 @return { void }
 */
 const navigateToDetails = id => {
-    router.push(routesMapper.CHARACTER_DETAILS.replace(':id', id))
+    let route = routesMapper.CHARACTER_DETAILS.replace(':id', id)
+    route = route.replace(':location', EXTERNAL)
+    router.push(route)
 }
+
 </script>
+
+<style lang="scss">
+.initial-page-wrapper {
+    .header-section {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        margin-bottom:20px;
+    }
+}
+</style>

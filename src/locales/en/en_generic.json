@@ -1,7 +1,7 @@
 {
-    "initialPage": "Initial Page",
+    "initialPage": "Characters",
     "characterCreation": "Character Creation",
-    "myCharacterList": "My Character List",
+    "myCharacterList": "My Characters",
     "characterDetails": "Character Details",
     "logo": "logo",
     "characterImageAlt": "Character Image",
@@ -13,5 +13,12 @@
     "events": "Events",
     "stories": "Stories",
     "series": "Series",
-    "notAvailable": "No Product Available"
+    "notAvailable": "No Product Available",
+    "search": "Search character",
+    "emptyStateAlt": "Empty state image",
+    "emptyStateText": "Thanks, really thanks for your search, but ye...nothing here",
+    "repeated": "Duplicate",
+    "repeatedCharacter": "Character with that name already exists",
+    "addedSuccess": "Added",
+    "addedMessage": "Character added with success"
 }

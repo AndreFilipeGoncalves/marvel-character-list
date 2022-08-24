@@ -5,7 +5,7 @@ const ROUTES = readonly({
     INITIAL_PAGE: '/',
     CHARACTER_CREATION: '/characterCreation',
     MY_CHARACTER_LIST: '/myCharacterList',
-    CHARACTER_DETAILS: '/characterDetails/:id'
+    CHARACTER_DETAILS: '/characterDetails/:location/:id'
 })
 
 export const routesMapper = buildConstantsMapper(ROUTES)

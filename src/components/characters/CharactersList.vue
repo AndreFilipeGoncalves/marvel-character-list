@@ -1,15 +1,20 @@
 <template>
     <section class="characters-wrapper">
         <!-- characters list -->
-        <div class="characters-list">
+        <div class="characters-list" v-if="characters.length">
             <character-card
             v-for="character in characters"
             :character="character"
             :key="character.id"
             @card:click="$emit('card:click', $event)"/>
         </div>
+
+        <!-- empty state -->
+        <empty-state v-else :text="t('emptyStateText')"/>
+
         <!-- paginator -->
         <paginator
+        v-if="characters.length && totalCharacters"
         :first="pageOffset"
         :rows="itemsPerPage"
         :totalRecords="totalCharacters"
@@ -20,6 +25,10 @@
 <script setup>
 import CharacterCard from '@/components/characters/CharacterCard'
 import Paginator from 'primevue/paginator/sfc'
+import EmptyState from '@/components/generic/emptyStates/EmptyState'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps({
     characters: Array,

@@ -8,6 +8,7 @@
             @click="$emit('edit', panelId)"/>
             <!-- add to my collection -->
             <simple-button
+            v-if="!internalCharacter"
             :label="t('addToCollection')"
             @click="$emit('add', panelId)"/>
         </div>
@@ -21,7 +22,8 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const props = defineProps({
-    panelId: [String, Number]
+    panelId: [String, Number],
+    internalCharacter: Boolean
 })
 
 defineEmits(['edit', 'add'])

@@ -9,6 +9,10 @@
 
 <script setup>
 import AppHeader from '@/components/generic/header/Header'
+import { initCharactersStorage } from '@/localStorageMDW/characters'
+
+/* init my characters storage */
+initCharactersStorage()
 
 </script>
 
