@@ -36,6 +36,13 @@ export const updateCharacter = (name, character) => {
     return Promise.resolve(name)
 }
 
+/** get a chracter by id */
+export const getCharacterById = (id) => {
+    const characters = getCharacters()
+    const foundCharacter = characters.find(ele => ele.id.toString() === id)
+    return Promise.resolve(foundCharacter)
+}
+
 /** get all characters */
 export const getAllCharacters = () => {
     return getCharacters()

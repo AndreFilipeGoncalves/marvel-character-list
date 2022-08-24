@@ -20,6 +20,3 @@ const props = defineProps({
 defineEmits(['update:inputValue'])
 
 </script>
-
-<style lang="scss">
-</style>

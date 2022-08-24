@@ -3,7 +3,7 @@
         <div class="character-details-wrapper" v-if="Object.keys(getCharacterDetails)">
             <!-- bio -->
             <character-bio
-            :character="getCharacterDetails">
+            :character="characterDetails">
                 <!-- control panel -->
                 <control-panel
                 :panelId="getCharacterDetails.id"
@@ -15,22 +15,22 @@
             <!-- comics list -->
             <character-info-list
             :title="t('comics')"
-            :entries="getCharacterDetails.comics"/>
+            :entries="characterDetails.comics"/>
 
             <!-- stories list -->
             <character-info-list
             :title="t('stories')"
-            :entries="getCharacterDetails.stories"/>
+            :entries="characterDetails.stories"/>
 
             <!-- events list -->
             <character-info-list
             :title="t('events')"
-            :entries="getCharacterDetails.events"/>
+            :entries="characterDetails.events"/>
 
             <!-- series list -->
             <character-info-list
             :title="t('series')"
-            :entries="getCharacterDetails.series"/>
+            :entries="characterDetails.series"/>
         </div>
     </view-wrapper>
 
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, ref } from 'vue'
+import { onBeforeUnmount, ref, computed } from 'vue'
 import ViewWrapper from '@/components/wrappers/ViewWrapper'
 import CharacterBio from '@/components/characters/CharacterBio'
 import ControlPanel from '@/components/generic/panels/ControlPanel'
@@ -73,7 +73,10 @@ const { getCharacterDetails } = mapGetters(moduleMapper.CHARACTERS)
 
 /** internal data */
 
-const { addNewCharacter } = mapActions(moduleMapper.MY_CHARACTERS)
+const {
+    addNewCharacter,
+    fetchMyCharacterById
+} = mapActions(moduleMapper.MY_CHARACTERS)
 
 const { getMyCharacterDetails } = mapGetters(moduleMapper.MY_CHARACTERS)
 
@@ -88,7 +91,7 @@ When INTERNAL it means it is a local character and will be used the localStorage
 WHEN EXTERNAL it means information from the api
 */
 if (location === INTERNAL) {
-
+    fetchMyCharacterById(id)
 } else {
     fetchCharacterById(id)
 }
@@ -102,6 +105,11 @@ id that we receive from the event is not used at all
 const editCharacterHandler = () => {
     console.log('edit character')
 }
+
+const characterDetails = computed(() => {
+    if (location === INTERNAL) return getMyCharacterDetails.value
+    return getCharacterDetails.value
+})
 
 /** add the character to the collection, in this case
 we will be using the getCharacterDetails getter, so the

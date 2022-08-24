@@ -18,8 +18,6 @@ const props = defineProps({
     entries: Array
 })
 
-console.log(props.entries)
-
 const responsiveOptions = [
 	{
 		breakpoint: '1024px',

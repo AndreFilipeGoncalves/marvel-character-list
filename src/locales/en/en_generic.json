@@ -7,7 +7,7 @@
     "characterImageAlt": "Character Image",
     "controlPanel": "Control Panel",
     "edit": "Edit",
-    "addToCollection": "Add to Collection",
+    "addToCollection": "Add to my characters",
     "placeholderDescription": "Description not available",
     "comics": "Comics",
     "events": "Events",
@@ -20,5 +20,9 @@
     "repeated": "Duplicate",
     "repeatedCharacter": "Character with that name already exists",
     "addedSuccess": "Added",
-    "addedMessage": "Character added with success"
+    "addedMessage": "Character added with success",
+    "uploadLabel": "Choose a picture",
+    "updateName": "Choose a new name",
+    "updateDescription": "Choose a new description",
+    "characterEditor": "Character Editor"
 }

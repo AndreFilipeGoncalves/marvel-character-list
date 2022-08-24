@@ -4,6 +4,7 @@
         <div class="control-panel-buttons">
             <!-- edit -->
             <simple-button
+            v-if="internalCharacter"
             :label="t('edit')"
             @click="$emit('edit', panelId)"/>
             <!-- add to my collection -->
