@@ -134,6 +134,7 @@ const cancelHandler = () => {
     box-sizing:border-box;
     padding: 0px 30px;
     padding-bottom:20px;
+    overflow:auto;
     .title {
         text-align:center;
         margin-bottom:40px;
