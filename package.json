@@ -46,10 +46,5 @@
         "sass-loader": "^8.0.2",
         "typescript": "~3.9.3",
         "vue-jest": "^5.0.0-0"
-    },
-    "resolutions": {
-        "cypress": "9.5.3"
-    },
-    "_id": "marvel-character-list@0.1.0",
-    "readme": "ERROR: No README data found!"
+    }
 }

@@ -9,6 +9,7 @@ const instance = axios.create({
 
 const setDefaultQueryParams = config => {
     config.params = config.params || {}
+    // add your api key here
     const apiKey = ''
     config.params.apikey = apiKey
 }
