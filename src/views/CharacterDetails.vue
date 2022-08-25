@@ -1,6 +1,8 @@
 <template>
     <view-wrapper>
-        <div class="character-details-wrapper" v-if="Object.keys(getCharacterDetails)">
+        <div
+        class="character-details-wrapper"
+        v-if="Object.keys(getCharacterDetails)">
             <!-- bio -->
             <character-bio
             :character="characterDetails">
@@ -47,7 +49,8 @@
         <character-editor
         :character="characterDetails"
         closeCross
-        @close="displayEditor = false"/>
+        @close="displayEditor = false"
+        @save:character="saveCharacterHandler"/>
     </modal>
 
 </template>
@@ -85,7 +88,8 @@ const { getCharacterDetails } = mapGetters(moduleMapper.CHARACTERS)
 
 const {
     addNewCharacter,
-    fetchMyCharacterById
+    fetchMyCharacterByName,
+    updateMyCharacter
 } = mapActions(moduleMapper.MY_CHARACTERS)
 
 const { getMyCharacterDetails } = mapGetters(moduleMapper.MY_CHARACTERS)
@@ -99,10 +103,11 @@ const displayEditor = ref(false)
 /** initial data fetch based on the location of the data
 It can either be INTERNAL or EXTERNAL
 When INTERNAL it means it is a local character and will be used the localStorage
-WHEN EXTERNAL it means information from the api
+When INTERNAL the name is used as ID so we avoid to create ids for our characters
+When EXTERNAL it means information from the api
 */
 if (location === INTERNAL) {
-    fetchMyCharacterById(id)
+    fetchMyCharacterByName(id)
 } else {
     fetchCharacterById(id)
 }
@@ -121,16 +126,46 @@ id that we receive from the event is not used at all
 const addToCollectionHandler = async () => {
     try {
         await addNewCharacter(getCharacterDetails.value)
-        displayToast.value = true
-        toastMessage.value = `${t('addedSuccess')} ${getCharacterDetails.value.name}`
-        toastContent.value = t('addedMessage')
-        toastType.value = SUCCESS
+        displayToastHandler(
+            `${t('addedSuccess')} ${getCharacterDetails.value.name}`,
+            t('addedMessage'),
+            SUCCESS
+        )
     } catch (err) {
-        displayToast.value = true
-        toastMessage.value = `${t('repeated')} ${err.message}`
-        toastContent.value = t('repeatedCharacter')
-        toastType.value = ERROR
+        displayToastHandler(`${t('repeated')} ${err.message}`, t('repeatedCharacter'), ERROR)
     }
+}
+
+/** saves the information about the character
+@image { string } - base64 image of the character
+@name { string } - new name for the character
+@description { string } - new description for the character
+@return { void }
+*/
+const saveCharacterHandler = async (data) => {
+    try {
+        await updateMyCharacter(data)
+        displayEditor.value = false
+        displayToastHandler(
+            `${t('updated')} ${data.oldName}`,
+            t('updatedSuccess'),
+            SUCCESS
+        )
+    } catch (err) {
+        displayToastHandler(t('error'), t('errorMessage'), ERROR)
+    }
+}
+
+/** display the toast with the params received
+@message { string } - message to be displayed on the head
+@content { string } - message to be displayed on the body
+@type { string } - type of toast
+*/
+const displayToastHandler = (message, content, type) => {
+    displayToast.value = true
+    toastMessage.value = message
+    toastContent.value = content
+    toastType.value = type
 }
 
 // clears info about the character before unmounting the view

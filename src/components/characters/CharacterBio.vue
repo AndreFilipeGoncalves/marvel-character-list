@@ -40,6 +40,7 @@ const props = defineProps({
 
 // build image src
 const imageSrc = computed(() => {
+    if (props.character.localImage) { return `data:image/jpeg;base64, ${props.character.localImage}` }
     if (!props.character.thumbnail) return
     const path = props.character.thumbnail.path
     const extension = props.character.thumbnail.extension

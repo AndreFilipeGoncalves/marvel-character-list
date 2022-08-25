@@ -8,9 +8,5 @@ export const menuStructure = readonly([
     {
         label: t('myCharacterList'),
         to: routesMapper.MY_CHARACTER_LIST
-    },
-    {
-        label: t('characterCreation'),
-        to: routesMapper.CHARACTER_CREATION
     }
 ])

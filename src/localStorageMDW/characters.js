@@ -28,18 +28,23 @@ export const removeCharacter = (name) => {
 }
 
 /** update character */
-export const updateCharacter = (name, character) => {
+export const updateCharacter = (oldName, character) => {
     const characters = getCharacters()
-    if (!validateCharacter(name, characters)) return Promise.reject(Error(name))
-    characters.push(character)
+    if (!validateCharacter(oldName, characters)) return Promise.reject(Error(name))
+
+    const myCharacter = characters.find(ele => ele.name === oldName)
+    myCharacter.name = character.name
+    myCharacter.description = character.description
+    myCharacter.localImage = character.image
+
     addItem(MY_CHARACTERS, characters)
-    return Promise.resolve(name)
+    return Promise.resolve(oldName)
 }
 
 /** get a chracter by id */
-export const getCharacterById = (id) => {
+export const getCharacterByName = name => {
     const characters = getCharacters()
-    const foundCharacter = characters.find(ele => ele.id.toString() === id)
+    const foundCharacter = characters.find(ele => ele.name === name)
     return Promise.resolve(foundCharacter)
 }
 

@@ -1,6 +1,5 @@
 {
     "initialPage": "Characters",
-    "characterCreation": "Character Creation",
     "myCharacterList": "My Characters",
     "characterDetails": "Character Details",
     "logo": "logo",
@@ -26,5 +25,9 @@
     "updateDescription": "Choose a new description",
     "characterEditor": "Character Editor",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "updated": "Updated",
+    "updatedSuccess": "Character updated with success",
+    "error": "Unexpected error",
+    "errorMessage": "Please try again"
 }

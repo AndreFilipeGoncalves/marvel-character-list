@@ -23,12 +23,12 @@
                 :src="imageToDisplay"
                 :alt="t('characterImageAlt')"/>
 
-                <!-- image placeholder -->
+                <!-- image default -->
                 <img
                 v-else
                 class="character-image"
-                src="@/assets/images/image-placeholder.png"
-                alt="">
+                :src="imageSrc"
+                :alt="t('characterImageAlt')">
 
                 <!-- uploader -->
                 <Uploader @upload:image="image=$event"/>
@@ -73,6 +73,8 @@ import { ref, computed } from 'vue'
 import TextInput from '@/components/generic/inputs/TextInput'
 import Uploader from '@/components/generic/uploader/Uploader'
 import SimpleButton from '@/components/generic/buttons/SimpleButton'
+import { FULL_SIZE } from '@/assets/constants/imageTypes'
+import { buildCharImageSrc } from '@/assets/scripts/urlBuilders'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -82,19 +84,36 @@ const props = defineProps({
     closeCross: Boolean
 })
 
-defineEmits('close')
+const emit = defineEmits(['close', 'save:character'])
 
-const image = ref('')
+const image = ref(props.character?.localImage || '')
+const name = ref(props.character?.name || '')
+const description = ref(props.character?.description || '')
 
+/** prepends the data information to load the base64 image */
 const imageToDisplay = computed(() => {
     return `data:image/jpeg;base64, ${image.value}`
 })
 
-const name = ref(props.character?.name || '')
-const description = ref(props.character?.description || '')
+// build image src
+const imageSrc = computed(() => {
+    if (!props.character.thumbnail) return
+    const path = props.character.thumbnail.path
+    const extension = props.character.thumbnail.extension
+    return buildCharImageSrc(path, extension, FULL_SIZE)
+})
 
-const saveHandler = () => {}
+/** emits the updated information about the character */
+const saveHandler = () => {
+    emit('save:character', {
+        oldName: props.character?.name,
+        image: image.value,
+        name: name.value,
+        description: description.value
+    })
+}
 
+/** resets the information about the character back to original */
 const cancelHandler = () => {
     image.value = ''
     name.value = props.character?.name || ''

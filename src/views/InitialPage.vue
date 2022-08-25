@@ -72,11 +72,11 @@ watch(getCurrentPageOffset, (newOffset) => {
 })
 
 /** navigate to character details
-@id { string, number } - character id
+@character { object } - character object
 @return { void }
 */
-const navigateToDetails = id => {
-    let route = routesMapper.CHARACTER_DETAILS.replace(':id', id)
+const navigateToDetails = character => {
+    let route = routesMapper.CHARACTER_DETAILS.replace(':id', character.id)
     route = route.replace(':location', EXTERNAL)
     router.push(route)
 }

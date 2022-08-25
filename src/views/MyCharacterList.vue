@@ -8,7 +8,7 @@
             </div>
 
             <characters-list
-            :characters="getMyCharacters.filter(ele => ele.name.includes(searchValue))"
+            :characters="getMyCharacters.filter(ele => ele.name?.includes(searchValue))"
             @card:click="navigateToDetails"/>
 
         </div>
@@ -39,11 +39,11 @@ const searchValue = ref('')
 fetchMyCharacters()
 
 /** navigate to character details
-@id { string, number } - character id
+@name { string } - character name
 @return { void }
 */
-const navigateToDetails = id => {
-    let route = routesMapper.CHARACTER_DETAILS.replace(':id', id)
+const navigateToDetails = character => {
+    let route = routesMapper.CHARACTER_DETAILS.replace(':id', character.name)
     route = route.replace(':location', INTERNAL)
     router.push(route)
 }

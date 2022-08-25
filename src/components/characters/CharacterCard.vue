@@ -1,7 +1,7 @@
 <template>
     <div
     class="character-card"
-    @click="$emit('card:click', character.id)">
+    @click="$emit('card:click', character)">
 
         <!-- image -->
         <div class="image-zoom-wrapper">
@@ -35,6 +35,8 @@ const emit = defineEmits(['card:click'])
 
 // build the image src
 const imageSrc = computed(() => {
+    if (props.character.localImage) { return `data:image/jpeg;base64, ${props.character.localImage}` }
+    if (!props.character.thumbnail) return
     const path = props.character.thumbnail.path
     const extension = props.character.thumbnail.extension
     return buildCharImageSrc(path, extension, PORTRAIT_UNCANNY)
