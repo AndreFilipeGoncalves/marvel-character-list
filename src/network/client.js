@@ -10,8 +10,8 @@ const instance = axios.create({
 const setDefaultQueryParams = config => {
     config.params = config.params || {}
 
-    /** swap "process.env.MARVEL_API_KEY" with your public key */
-    const apiKey = `${process.env.DEVELOPER_KEY}`
+    /** swap "process.env.VUE_APP_DEVELOPER_KEY" with your public key */
+    const apiKey = `${process.env.VUE_APP_DEVELOPER_KEY}`
 
     config.params.apikey = apiKey
 }
