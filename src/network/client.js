@@ -11,7 +11,7 @@ const setDefaultQueryParams = config => {
     config.params = config.params || {}
 
     /** swap "process.env.MARVEL_API_KEY" with your public key */
-    const apiKey = `${process.env.MARVEL_API_KEY}`
+    const apiKey = `${process.env.DEVELOPER_KEY}`
 
     config.params.apikey = apiKey
 }
