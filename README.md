@@ -1,6 +1,12 @@
 # Growin x Yapily - Frontend Engineer Coding Challenge
 ### André Gonçalves
 
+## Deployed Version
+```
+For an easier check of the app you can visit
+
+https://marvel-characters-challenge.herokuapp.com/#/
+```
 
 ## Project setup
 ```
