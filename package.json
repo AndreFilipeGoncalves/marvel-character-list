@@ -11,6 +11,9 @@
         "postinstall": "npm run build",
         "start": "node server.js"
     },
+    "engines": {
+        "node": "14.17.0"
+    },
     "dependencies": {
         "axios": "^0.25.0",
         "core-js": "^3.6.5",
