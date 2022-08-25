@@ -1,34 +1,25 @@
-# marvel-character-list
+# Growin x Yapily - Frontend Engineer Coding Challenge
+### André Gonçalves
+
 
 ## Project setup
 ```
-yarn install
+Unzip the code
+Open a terminal
+Navigate to the project folder
+On the terminal run "npm install" (this will install the dependencies)
+On the terminal run "npm run serve" (this will start the code)
+Open the browser and navigate to "localhost:8080"
+You should be watching the app now
 ```
 
-### Compiles and hot-reloads for development
+## NOTES
 ```
-yarn serve
+node version used 14.17.0
+node version 18+ will probably not build
+
+The app needs a marvel developer key to actually fetch the information, you can add one
+by going to "src/network/client" and adding your apiKey there (there is a comment in the code telling you where)
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
